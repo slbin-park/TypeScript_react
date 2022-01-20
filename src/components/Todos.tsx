@@ -1,6 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, FormEvent } from "react";
 
-const TodoItem = React.memo(function TodoItem({ todo, onToggle }) {
+type TodoProps = {
+  todo: any;
+  onToggle: (text: string) => void;
+};
+
+const TodoItem = React.memo(function TodoItem({ todo, onToggle }: TodoProps) {
   return (
     <li
       style={{ textDecoration: todo.done ? "line-through" : "none" }}
@@ -10,6 +15,7 @@ const TodoItem = React.memo(function TodoItem({ todo, onToggle }) {
     </li>
   );
 });
+
 const TodoList = React.memo(function TodoList({ todos, onToggle }) {
   return (
     <ul>
@@ -22,8 +28,8 @@ const TodoList = React.memo(function TodoList({ todos, onToggle }) {
 
 function Todos({ todos, onCreate, onToggle }) {
   const [text, setText] = useState("");
-  const onChange = (e) => setText(e.target.value);
-  const onSubmit = (e) => {
+  const onChange = (e: any) => setText(e.target.value);
+  const onSubmit = (e: any) => {
     e.preventDefault(); // Submit 이벤트 발생했을 때 새로고침 ㅂ아지
     onCreate(text);
     setText("");

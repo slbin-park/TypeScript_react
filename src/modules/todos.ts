@@ -1,11 +1,11 @@
 // 액션 타입 선언
-const ADD_TODO = 'todos/ADD_TODO';
-const TOGGLE_TODO = 'todos/TOGGLE_TODO';
+const ADD_TODO = 'todos/ADD_TODO' as const;
+const TOGGLE_TODO = 'todos/TOGGLE_TODO' as const;
 
-let nextId = 1;
+let nextId:number = 1;
 // todo 데이터에 사용할 고유 id
 
-export const addTodo = text => ({
+export const addTodo = (text:string) => ({
     type: ADD_TODO,
     todo: {
       id: nextId++, // 새 항목을 추가하고 nextId 값에 1을 더해줍니다.

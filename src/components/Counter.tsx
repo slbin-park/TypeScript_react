@@ -1,6 +1,19 @@
 import React from "react";
 
-function Counter({ number, diff, onIncrease, onDecrease, onSetDiff }) {
+type CounterProps = {
+  number: number;
+  diff: number;
+  onIncrease: () => void;
+  onDecrease: () => void;
+  onSetDiff: (a: number) => void;
+};
+function Counter({
+  number,
+  diff,
+  onIncrease,
+  onDecrease,
+  onSetDiff,
+}: CounterProps) {
   const onChange = (e) => {
     onSetDiff(parseInt(e.target.value, 10));
   };
